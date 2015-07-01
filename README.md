@@ -1,7 +1,7 @@
 
-# card-flip-poc
+# flip-card-playground
 
-> Card flip concept animations
+> Flip card customisable animation properties
 
 ```
 npm run build

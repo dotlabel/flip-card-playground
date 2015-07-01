@@ -1,7 +1,8 @@
 {
-  "name": "card-flip-poc",
+  "name": "flip-card-playground",
+  "private": true,
   "version": "0.0.0",
-  "description": "Card flip concept animations",
+  "description": "Flip card customisable animation properties",
   "scripts": {
     "prepublish": "npm run build",
     "prepack": "npm run make",
@@ -38,12 +39,12 @@
   "author": "Matt Styles",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mattstyles/card-flip-poc.git"
+    "url": "git://github.com/dotlabel/flip-card-playground.git"
   },
   "bugs": {
-    "url": "https://github.com/mattstyles/card-flip-poc/issues"
+    "url": "https://github.com/dotlabel/flip-card-playground/issues"
   },
-  "homepage": "https://github.com/mattstyles/card-flip-poc",
+  "homepage": "https://github.com/dotlabel/flip-card-playground",
   "license": "WTFPL",
   "dependencies": {
     "babel": "^5.2.17",
