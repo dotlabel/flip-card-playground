@@ -8,8 +8,8 @@ export default class GUI {
         this.callbacks = []
 
         // Build gui
-        this.gui.add( data, 'test', 0, 10 )
-            .step( 1 )
+        this.gui.add( data, 'speed', 0, 5 )
+            .step( .1 )
             .onFinishChange( this.onFinish )
     }
 

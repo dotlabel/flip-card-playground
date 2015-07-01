@@ -1,0 +1,28 @@
+
+@--Flip-size: 512px;
+
+.FlipCard {
+    position: relative;
+    width: @--Flip-size;
+    height: @--Flip-size;
+
+    overflow: hidden;
+}
+
+.FlipCard-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: @--Flip-size;
+    height: @--Flip-size;
+
+    /* transition: all 1s linear; */
+}
+
+.FlipCard-card--isFlipping {
+    transform: rotateY( 90deg );
+}
+
+.FlipCard-card--isFlipped {
+    display:none;
+}
