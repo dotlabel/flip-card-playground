@@ -20,13 +20,12 @@ class App extends React.Component {
     }
 
     render() {
-        const IMAGE_SIZE = 512
+        const IMAGE_SIZE = 128
 
         // Pass through animation params to flip card
         return (
             <div className="container">
-                <h1>Hello React</h1>
-                <FlipCard animParams={ this.props.animParams }>
+                <FlipCard animParams={ this.props.animParams } size={ IMAGE_SIZE }>
                     <img src="/assets/face1.png" width={ IMAGE_SIZE } height={ IMAGE_SIZE } />
                     <img src="/assets/face2.png" width={ IMAGE_SIZE } height={ IMAGE_SIZE } />
                     <img src="/assets/face3.png" width={ IMAGE_SIZE } height={ IMAGE_SIZE } />
@@ -39,7 +38,6 @@ class App extends React.Component {
 
 
 function render() {
-    console.log( 'rendering' )
     React.render( <App animParams={ animParamStore.params } />, document.querySelector( '.js-main' ) )
 }
 

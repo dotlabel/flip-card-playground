@@ -1,63 +1,11 @@
 
-import React from 'react'
+import path from 'path'
+
+import React from 'react/addons'
 import classnames from 'classnames'
 
-class Card extends React.Component {
-    state = {
-        flipping: false,
-        flipped: false
-    }
-
-    constructor( props ) {
-        super( props )
-    }
-
-    componentDidMount() {
-        this.el = this.refs.card.getDOMNode()
-    }
-
-    onClick = () => {
-        console.log( this.el )
-
-        this.setState({
-            flipping: true
-        })
-
-        this.el.addEventListener( 'webkitTransitionEnd', this.onTransitionEnd )
-    }
-
-    onTransitionEnd = () => {
-        console.log( 'onTransitionEnd' )
-        this.setState({
-            flipped: true,
-            flipping: false
-        })
-
-        this.el.removeEventListener( 'webkitTransitionEnd', this.onTransitionEnd )
-    }
-
-    render() {
-        let state = this.state
-        let props = this.props
-
-        let classes = classnames({
-            'FlipCard-card': true,
-            'FlipCard-card--isFlipping': state.flipping,
-            'FlipCard-card--isFlipped': state.flipped
-        })
-
-        let style = {
-            transition: 'all ' + this.props.animParams.speed + 's linear'
-        }
-
-        return (
-            <div ref="card" style={ style } className={ classes } onClick={ this.onClick }>
-                { this.props.children }
-            </div>
-        )
-    }
-}
-
+let CSSTransitionGroup = React.addons.CSSTransitionGroup
+let clone = React.addons.cloneWithProps
 
 
 export default class FlipCard extends React.Component {
@@ -65,16 +13,60 @@ export default class FlipCard extends React.Component {
         super( props )
     }
 
-    render() {
-        console.log( 'flipcard::', this.props.animParams )
+    state = {
+        activeCard: 0
+    }
 
-        let children = this.props.children.map( ( child, i ) => {
-            return <Card key={ 'img' + i } animParams={ this.props.animParams }>{ child }</Card>
+    onClick = () => {
+        // Wrap 0 to number of children - 1
+        this.setState({
+            activeCard: ++this.state.activeCard % ( this.props.children.length - 1 )
+        })
+    }
+
+    getChildTransition() {
+        let leaveTransition = 'transform ' + this.props.animParams.speed + 's ease-in'
+        return 'opacity .177s ease-in, ' + leaveTransition
+    }
+
+    render() {
+        let children = this.props.children
+            .filter( ( child, i ) => {
+                return i === this.state.activeCard
+            })
+            .map( child => {
+                return clone( child, {
+                    key: path.basename( child.props.src, '.png' ),
+                    className: classnames({
+                        'u-fill': true,
+                        'FlipCard-cardImage': true
+                    }),
+                    style: {
+                        transformOrigin: this.props.animParams.origin + '%',
+                        transition: this.getChildTransition()
+                    }
+                })
+            })
+
+        let style = {
+            perspective: this.props.animParams.perspective,
+            width: this.props.animParams.size,
+            height: this.props.animParams.size
+        }
+
+        let cardClasses = classnames({
+            'u-fit': true,
+            'FlipCard-card': true
         })
 
         return (
-            <div className="FlipCard">
-                { children }
+            <div className="FlipCard" style={ style } onClick={ this.onClick }>
+                <CSSTransitionGroup
+                    className={ cardClasses }
+                    transitionName="FlipCard-card-"
+                    transitionAppear={ false }>
+                    { children }
+                </CSSTransitionGroup>
             </div>
         )
     }

@@ -1,28 +1,29 @@
 
-@--Flip-size: 512px;
 
 .FlipCard {
     position: relative;
-    width: @--Flip-size;
-    height: @--Flip-size;
-
-    overflow: hidden;
 }
 
 .FlipCard-card {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: @--Flip-size;
-    height: @--Flip-size;
 
-    /* transition: all 1s linear; */
+}
+.FlipCard-cardImage {
+
 }
 
-.FlipCard-card--isFlipping {
-    transform: rotateY( 90deg );
+.FlipCard-card--enter {
+    opacity: 0.01;
+    transition: opacity .177s ease-in;
 }
-
-.FlipCard-card--isFlipped {
-    display:none;
+.FlipCard-card--enter-active {
+    opacity: 1;
+}
+.FlipCard-card--leave {
+    transition: transform .333s ease-in, opacity .5s ease-in;
+    transform: rotateY( 0deg );
+    /* opacity: 1; */
+}
+.FlipCard-card--leave-active {
+    transform: rotateY( -90deg );
+    /* opacity: 0; */
 }

@@ -7,7 +7,10 @@ class AnimParamStore extends EventEmitter {
         super( props )
 
         this.params = {
-            speed: .3
+            size: 256,
+            speed: .3,
+            origin: 0,
+            perspective: 1700
         }
     }
 
