@@ -26,7 +26,7 @@ export default class FlipCard extends React.Component {
 
     getChildTransition() {
         let leaveTransition = 'transform ' + this.props.animParams.speed + 's ease-in'
-        return 'opacity .177s ease-in, ' + leaveTransition
+        return 'opacity .5s ease-in, ' + leaveTransition
     }
 
     render() {

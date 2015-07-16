@@ -2,12 +2,18 @@
 
 .FlipCard {
     position: relative;
+    margin: 50px;
 }
 
 .FlipCard-card {
 
+    &:hover {
+        cursor:pointer;
+    }
 }
 .FlipCard-cardImage {
+    background: @--color-white;
+    backface-visibility: hidden;
 
 }
 

@@ -26,10 +26,10 @@ class App extends React.Component {
         return (
             <div className="container">
                 <FlipCard animParams={ this.props.animParams } size={ IMAGE_SIZE }>
-                    <img src="/assets/face1.png" width={ IMAGE_SIZE } height={ IMAGE_SIZE } />
-                    <img src="/assets/face2.png" width={ IMAGE_SIZE } height={ IMAGE_SIZE } />
-                    <img src="/assets/face3.png" width={ IMAGE_SIZE } height={ IMAGE_SIZE } />
-                    <img src="/assets/face4.png" width={ IMAGE_SIZE } height={ IMAGE_SIZE } />
+                    <img src="./assets/face1.png" width={ IMAGE_SIZE } height={ IMAGE_SIZE } />
+                    <img src="./assets/face2.png" width={ IMAGE_SIZE } height={ IMAGE_SIZE } />
+                    <img src="./assets/face3.png" width={ IMAGE_SIZE } height={ IMAGE_SIZE } />
+                    <img src="./assets/face4.png" width={ IMAGE_SIZE } height={ IMAGE_SIZE } />
                 </FlipCard>
             </div>
         )
